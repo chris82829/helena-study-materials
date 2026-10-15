@@ -1,16 +1,13 @@
 Question ID: dialogue_response_quality
 Source column: v14_dialog_antwortqualitaet
 
-English wording in the supplied manuscript (or context-question translation):
-The chatbot’s responses made sense to me.
+German wording as administered (final questionnaire version, wording of 2026-09-23):
+Die Antworten des Chatbots ergaben für mich Sinn.
 
-Recovered server German wording — administered version not yet confirmed:
-Die meisten Antworten des Chatbots ergaben für mich Sinn.
+English translation (as reported in the paper):
+The chatbot's responses made sense to me.
 
-English translation of the recovered German wording:
-Most of the chatbot’s responses made sense to me.
-
-Recorded source framework: CRS-Que
-Recorded source-item mapping: Tabelle 5, CUI Response Quality (Kurzform)
-Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Source framework: CRS-Que
+Source item: CRS-Que, Table 5, CUI Response Quality (short form)
+Adaptation: German translation adapted to job search; harmonized 7-point scale.
 Reference: https://doi.org/10.1145/3631534

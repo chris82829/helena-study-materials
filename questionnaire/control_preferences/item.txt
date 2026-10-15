@@ -1,16 +1,13 @@
 Question ID: control_preferences
 Source column: v14_kontrolle_praeferenzen
 
-English wording in the supplied manuscript (or context-question translation):
-I was in control of changing my search preferences in the chat.
-
-Recovered server German wording — administered version not yet confirmed:
+German wording as administered (final questionnaire version, wording of 2026-09-23):
 Ich hatte die Kontrolle darüber, meine Suchwünsche im Chat zu verändern.
 
-English translation of the recovered German wording:
+English translation (as reported in the paper):
 I was in control of changing my search preferences in the chat.
 
-Recorded source framework: CRS-Que
-Recorded source-item mapping: Tabelle 4, User Control, Item 1
-Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Source framework: CRS-Que
+Source item: CRS-Que, Table 4, User Control, item 1
+Adaptation: German translation adapted to job search; harmonized 7-point scale.
 Reference: https://doi.org/10.1145/3631534

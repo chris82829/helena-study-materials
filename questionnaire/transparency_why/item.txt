@@ -1,16 +1,13 @@
 Question ID: transparency_why
 Source column: v14_transparenz_empfehlungsgrund
 
-English wording in the supplied manuscript (or context-question translation):
-I understood why the positions were recommended to me.
-
-Recovered server German wording — administered version not yet confirmed:
+German wording as administered (final questionnaire version, wording of 2026-09-23):
 Ich habe verstanden, warum mir die Stellen empfohlen wurden.
 
-English translation of the recovered German wording:
+English translation (as reported in the paper):
 I understood why the positions were recommended to me.
 
-Recorded source framework: CRS-Que
-Recorded source-item mapping: Tabelle 4, Transparency, Item 1
-Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Source framework: CRS-Que
+Source item: CRS-Que, Table 4, Transparency, item 1
+Adaptation: German translation adapted to job search; harmonized 7-point scale.
 Reference: https://doi.org/10.1145/3631534

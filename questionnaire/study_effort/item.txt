@@ -1,16 +1,13 @@
 Question ID: study_effort
 Source column: v14_zusatz_suchaufwand
 
-English wording in the supplied manuscript (or context-question translation):
+German wording as administered (final questionnaire version, wording of 2026-09-23):
+Die Nutzung des Systems war für mich aufwendig.
+
+English translation (as reported in the paper):
 Using the system was effortful for me.
 
-Recovered server German wording — administered version not yet confirmed:
-Die Nutzung von HELENA war für mich aufwendig.
-
-English translation of the recovered German wording:
-Using HELENA was effortful for me.
-
-Recorded source framework: HELENA
-Recorded source-item mapping: HELENA-Zusatzitem Aufwand
-Recorded adaptation: Studienbezogene Eigenentwicklung; keine Framework-Skala.
+Source framework: Own development
+Source item: Own item (overall effort)
+Adaptation: Own development; 7-point scale.
 Reference: 

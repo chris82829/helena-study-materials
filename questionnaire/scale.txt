@@ -1,15 +1,14 @@
-Agreement scale: 1 = strongly disagree; 7 = strongly agree.
-German labels from the recovered instrument: 1 Stimme überhaupt nicht zu;
-2 Stimme nicht zu; 3 Stimme eher nicht zu; 4 Weder noch;
-5 Stimme eher zu; 6 Stimme zu; 7 Stimme voll und ganz zu.
-Cannot judge: Kann ich nicht beurteilen.
+Agreement scale for all 20 rating items: 1 = strongly disagree; 7 = strongly agree.
+German labels: 1 Stimme überhaupt nicht zu; 2 Stimme nicht zu; 3 Stimme eher nicht zu;
+4 Weder noch; 5 Stimme eher zu; 6 Stimme zu; 7 Stimme voll und ganz zu.
+Additional option: Kann ich nicht beurteilen (cannot judge).
 
-The released Excel source has blank cells, not explicit missingness reason codes.
-All blank cells are preserved as MISSING. The manuscript attributes missing
-ratings to cannot judge; this reason cannot be independently verified from this file.
+Missing values: All rating items were mandatory but offered the option "cannot judge",
+which was stored as an empty cell. MISSING in a rating therefore means "cannot judge".
 Experience codes: 0 never; 1 less than weekly; 2 at least weekly but not daily;
-3 daily. MISSING remains distinct from 0.
+3 daily. MISSING ("no answer") remains distinct from 0.
 Condition codes: A baseline; B fixed advisor; C configurable advisor.
-The 20 ratings are ordinal individual items. Construct means require all items.
-Trust is a two-item adaptation, not a validated full original scale.
+Construct scores (usefulness, control, transparency: 3 items each; trust: 2 items)
+are means computed only when all items of the construct have a valid rating.
+The trust pair is an adaptation, not a validated full original scale.
 ResQue originally used five scale points; the study uses seven for all ratings.
