@@ -1,0 +1,23 @@
+{
+  "format": "HELENA-Personality-MLDS",
+  "schema_version": 1,
+  "provenance": {
+    "method": "Meta-Language-defined Structures",
+    "reference": "https://doi.org/10.15439/2025F5613",
+    "origin": "builtin"
+  },
+  "personality": {
+    "mode": "preset",
+    "preset": "neutral",
+    "name": "HELENA",
+    "description": "",
+    "traits": [],
+    "focus": "ausgewogen"
+  },
+  "template": {
+    "id": "neutral",
+    "subtitle": "Allgemeine KI",
+    "summary": "Beantwortet die aktuelle Frage sachlich ohne besondere Fachrolle oder Persönlichkeit.",
+    "selectable": false
+  }
+}

@@ -1,0 +1,41 @@
+name: helena-survey
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    init: true
+    user: "${HELENA_UID:-10001}:${HELENA_GID:-10001}"
+    env_file: .env
+    environment:
+      DATABASE_PATH: /data/instance/jobs.sqlite3
+      EMBEDDING_CACHE_DIR: /data/embeddings
+      HF_HOME: /data/huggingface
+      HF_HUB_OFFLINE: "1"
+      SEED_DUMMY_DATA: "false"
+      REQUIRE_COMPLETE_INDEX: "true"
+      E5_DEVICE: cpu
+      E5_BATCH_SIZE: "8"
+      OMP_NUM_THREADS: "4"
+      MKL_NUM_THREADS: "4"
+      TOKENIZERS_PARALLELISM: "false"
+    ports:
+      - "${HELENA_BIND_ADDRESS:-127.0.0.1}:${HELENA_PORT:-5051}:5050"
+    volumes:
+      - ./runtime:/data
+    cpus: 6
+    mem_limit: 12g
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5050/api/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      start_period: 120s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

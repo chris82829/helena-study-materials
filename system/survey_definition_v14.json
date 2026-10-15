@@ -1,0 +1,1056 @@
+{
+  "version": "helena-v14",
+  "title": "HELENA – Nutzen, Vertrauen und Steuerbarkeit der KI-Beratung",
+  "instrument": "Forschungsfragengeleitete deutsche Auswahl und Adaptation aus ResQue und CRS-Que",
+  "scale": {
+    "min": 1,
+    "max": 7,
+    "low": "Stimme überhaupt nicht zu",
+    "high": "Stimme voll und ganz zu",
+    "labels": [
+      "Stimme überhaupt nicht zu",
+      "Stimme nicht zu",
+      "Stimme eher nicht zu",
+      "Weder noch",
+      "Stimme eher zu",
+      "Stimme zu",
+      "Stimme voll und ganz zu"
+    ]
+  },
+  "frameworks": [
+    {
+      "name": "ResQue",
+      "citation": "Pu, Chen & Hu (2011), RecSys",
+      "url": "https://doi.org/10.1145/2043932.2043962",
+      "primary_pdf": "https://www.comp.hkbu.edu.hk/~lichen/download/p157-pu.pdf",
+      "original_scale_max": 5
+    },
+    {
+      "name": "CRS-Que",
+      "citation": "Jin, Chen, Cai & Zhao (2024), ACM TORS 2(1)",
+      "url": "https://doi.org/10.1145/3631534",
+      "primary_pdf": "https://yucheng.gold/file/tors23.pdf",
+      "original_scale_max": 7
+    }
+  ],
+  "validation_note": "Auswahl, deutsche Übertragung, Jobsuchkontext und gemeinsame siebenstufige Skala sind eine Adaptation. Keine eigenständig validierte deutsche Gesamtskala; kein Summenwert über alle Konstrukte. Die ergänzte Vertrauens-Zweiergruppe ist eigenständig angelehnt; der Manipulationscheck ist ein HELENA-Einzelitem.",
+  "constructs": [
+    {
+      "id": "usefulness",
+      "title": "Wahrgenommener Nutzen",
+      "items": [
+        "usefulness_ideal",
+        "usefulness_find_easy",
+        "usefulness_suggestions"
+      ],
+      "scoring": "complete_case_mean",
+      "min": 1,
+      "max": 7,
+      "role": "primary"
+    },
+    {
+      "id": "control",
+      "title": "Kontrolle über die Suche",
+      "items": [
+        "control_preferences",
+        "control_recommendations",
+        "control_adjustment"
+      ],
+      "scoring": "complete_case_mean",
+      "min": 1,
+      "max": 7,
+      "role": "secondary"
+    },
+    {
+      "id": "transparency",
+      "title": "Nachvollziehbarkeit der Empfehlungen",
+      "items": [
+        "transparency_why",
+        "transparency_assessment",
+        "transparency_fit"
+      ],
+      "scoring": "complete_case_mean",
+      "min": 1,
+      "max": 7,
+      "role": "secondary"
+    },
+    {
+      "id": "trust",
+      "title": "Vertrauen in die Empfehlungen",
+      "items": [
+        "trust_fit",
+        "trust_credibility"
+      ],
+      "scoring": "complete_case_mean",
+      "min": 1,
+      "max": 7,
+      "role": "exploratory"
+    }
+  ],
+  "demographics": {
+    "id": "demographics",
+    "title": "Ein paar Angaben zu dir",
+    "description": "Diese Angaben helfen uns, deine Vorerfahrung einzuordnen. Sie verändern die Stellensuche nicht.",
+    "fields": [
+      {
+        "name": "study_arm",
+        "title": "Zugewiesene Studienvariante",
+        "kind": "choice",
+        "systemProvided": true,
+        "options": [
+          [
+            "A",
+            "A – Basissystem ohne KI-Suchpersönlichkeit"
+          ],
+          [
+            "B",
+            "B – Fester Top-Berufsberater"
+          ],
+          [
+            "C",
+            "C – Selbst gestaltete KI-Suchpersönlichkeit auf Berufsberater-Basis"
+          ]
+        ],
+        "codes": {
+          "A": 0,
+          "B": 1,
+          "C": 2
+        },
+        "framework": "HELENA",
+        "construct": "context",
+        "source_item": "Studienkontext, kein Framework-Item",
+        "source_url": "",
+        "item_type": "context"
+      },
+      {
+        "name": "previous_participation",
+        "title": "Hast du bereits einmal an dieser Studie teilgenommen?",
+        "kind": "choice",
+        "beforeSystem": true,
+        "options": [
+          [
+            "yes",
+            "Ja"
+          ],
+          [
+            "no",
+            "Nein"
+          ],
+          [
+            "unsure",
+            "Unsicher"
+          ]
+        ],
+        "codes": {
+          "yes": 1,
+          "no": 0,
+          "unsure": 2
+        },
+        "framework": "HELENA",
+        "construct": "repeat_participation",
+        "item_type": "screening",
+        "source_item": "HELENA – Selbstbericht zur früheren Teilnahme",
+        "adaptation": "Keine technische Duplikaterkennung; unklare Antworten bleiben gesondert."
+      },
+      {
+        "name": "education",
+        "title": "Was beschreibt deine aktuelle Situation am besten?",
+        "kind": "choice",
+        "options": [
+          [
+            "bachelor",
+            "Bachelorstudium"
+          ],
+          [
+            "master",
+            "Masterstudium"
+          ],
+          [
+            "other_studies",
+            "Anderes Studium"
+          ],
+          [
+            "doctorate",
+            "Promotion"
+          ],
+          [
+            "training",
+            "Schule oder Ausbildung"
+          ],
+          [
+            "not_studying",
+            "Aktuell nicht im Studium oder in Ausbildung"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ],
+        "beforeSystem": true,
+        "framework": "HELENA",
+        "construct": "context",
+        "source_item": "Studienkontext, kein Framework-Item",
+        "source_url": "",
+        "item_type": "context"
+      },
+      {
+        "name": "study_field",
+        "title": "Was ist deine Studien- oder Fachrichtung?",
+        "kind": "text",
+        "optional": true,
+        "maxLength": 160,
+        "hint": "Du kannst dieses Feld auch leer lassen.",
+        "beforeSystem": true,
+        "framework": "HELENA",
+        "construct": "context",
+        "source_item": "Studienkontext, kein Framework-Item",
+        "source_url": "",
+        "item_type": "context"
+      },
+      {
+        "name": "job_portal_experience",
+        "title": "Wie häufig hast du in den letzten sechs Monaten Online-Jobportale genutzt?",
+        "kind": "choice",
+        "level": "ordinal",
+        "beforeSystem": true,
+        "options": [
+          [
+            "never",
+            "Nie"
+          ],
+          [
+            "occasionally",
+            "Seltener als einmal pro Woche"
+          ],
+          [
+            "weekly",
+            "Mindestens wöchentlich, aber nicht täglich"
+          ],
+          [
+            "daily",
+            "Täglich"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ],
+        "codes": {
+          "never": 0,
+          "occasionally": 1,
+          "weekly": 2,
+          "daily": 3
+        },
+        "framework": "HELENA",
+        "construct": "context",
+        "source_item": "Studienkontext, kein Framework-Item",
+        "source_url": "",
+        "item_type": "context"
+      },
+      {
+        "name": "ai_chat_experience",
+        "title": "Wie häufig hast du in den letzten sechs Monaten KI-Chatbots genutzt?",
+        "kind": "choice",
+        "level": "ordinal",
+        "beforeSystem": true,
+        "options": [
+          [
+            "never",
+            "Nie"
+          ],
+          [
+            "occasionally",
+            "Seltener als einmal pro Woche"
+          ],
+          [
+            "weekly",
+            "Mindestens wöchentlich, aber nicht täglich"
+          ],
+          [
+            "daily",
+            "Täglich"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ],
+        "codes": {
+          "never": 0,
+          "occasionally": 1,
+          "weekly": 2,
+          "daily": 3
+        },
+        "framework": "HELENA",
+        "construct": "context",
+        "source_item": "Studienkontext, kein Framework-Item",
+        "source_url": "",
+        "item_type": "context"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "availability",
+      "title": "Verfügbare Stellenangebote",
+      "description": "Bewerte die Verfügbarkeit geeigneter Stellen für deine Suche.",
+      "fields": [
+        {
+          "name": "postings_available",
+          "title": "Für mein Anliegen gab es im System grundsätzlich passende Stellenangebote.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "postings_available",
+          "framework": "HELENA",
+          "source_item": "Own development: perceived availability",
+          "source_url": "",
+          "adaptation": "Control variable; not part of a multi-item construct.",
+          "item_type": "single_item"
+        }
+      ]
+    },
+    {
+      "id": "usefulness",
+      "title": "Nutzen für deine Suche",
+      "description": "Denke an deine gerade abgeschlossene Suche. Bewerte jede Aussage von 1 bis 7. Wenn du sie nicht beurteilen kannst, wähle die entsprechende Antwort.",
+      "fields": [
+        {
+          "name": "usefulness_ideal",
+          "title": "Das System hat mir geholfen, unter den verfügbaren Angeboten die für mich relevantesten Stellen zu finden.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "usefulness",
+          "framework": "ResQue",
+          "source_item": "Tabelle 2, Perceived Usefulness, Item 1",
+          "source_url": "https://doi.org/10.1145/2043932.2043962",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "multi_item"
+        },
+        {
+          "name": "usefulness_find_easy",
+          "title": "Mit dem System war es einfach, meine Suche einzugrenzen und relevante Stellen zu sichten.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "usefulness",
+          "framework": "ResQue",
+          "source_item": "Tabelle 2, Perceived Usefulness, Item 2",
+          "source_url": "https://doi.org/10.1145/2043932.2043962",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "multi_item"
+        },
+        {
+          "name": "usefulness_suggestions",
+          "title": "Das System hat aus dem verfügbaren Angebot die bestmöglichen Vorschläge gemacht.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "usefulness",
+          "framework": "ResQue",
+          "source_item": "Tabelle 2, Perceived Usefulness, Item 3",
+          "source_url": "https://doi.org/10.1145/2043932.2043962",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "multi_item"
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "title": "Vertrauen in die Empfehlungen",
+      "description": "Wie hast du die Vorschläge und Einschätzungen erlebt?",
+      "fields": [
+        {
+          "name": "trust_fit",
+          "title": "Ich vertraue der Einschätzung des Systems, welche der verfügbaren Stellen am besten zu mir passen.",
+          "kind": "scale",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "framework": "ResQue / CRS-Que (angelehnt)",
+          "construct": "trust",
+          "item_type": "multi_item",
+          "source_item": "ResQue Tabelle 2: Confidence & Trust; CRS-Que Tabelle 4: Trust & Confidence (konzeptuell angelehnt)",
+          "source_url": "https://doi.org/10.1145/2043932.2043962",
+          "source_urls": [
+            "https://doi.org/10.1145/2043932.2043962",
+            "https://doi.org/10.1145/3631534"
+          ],
+          "adaptation": "Eigenständig adaptierte Zweiergruppe für Stellenpassung und Glaubwürdigkeit; keine vollständige oder validierte Originalskala.",
+          "presentation": "likert"
+        },
+        {
+          "name": "trust_credibility",
+          "title": "Die Einschätzungen des Systems zur Passung der gefundenen Stellen erschienen mir glaubwürdig.",
+          "kind": "scale",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "framework": "ResQue / CRS-Que (angelehnt)",
+          "construct": "trust",
+          "item_type": "multi_item",
+          "source_item": "ResQue Tabelle 2: Confidence & Trust; CRS-Que Tabelle 4: Trust & Confidence (konzeptuell angelehnt)",
+          "source_url": "https://doi.org/10.1145/2043932.2043962",
+          "source_urls": [
+            "https://doi.org/10.1145/2043932.2043962",
+            "https://doi.org/10.1145/3631534"
+          ],
+          "adaptation": "Eigenständig adaptierte Zweiergruppe für Stellenpassung und Glaubwürdigkeit; keine vollständige oder validierte Originalskala.",
+          "presentation": "likert"
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "title": "Das Gespräch mit HELENA",
+      "description": "Denke an deine gerade abgeschlossene Suche. Bewerte jede Aussage von 1 bis 7. Wenn du sie nicht beurteilen kannst, wähle die entsprechende Antwort.",
+      "fields": [
+        {
+          "name": "dialogue_understanding",
+          "title": "Ich hatte den Eindruck, dass der Chatbot verstand, was ich wollte.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "dialogue_understanding",
+          "framework": "CRS-Que",
+          "source_item": "Tabelle 5, CUI Understanding (Kurzform)",
+          "source_url": "https://doi.org/10.1145/3631534",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "single_item"
+        },
+        {
+          "name": "dialogue_response_quality",
+          "title": "Die Antworten des Chatbots ergaben für mich Sinn.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "dialogue_response_quality",
+          "framework": "CRS-Que",
+          "source_item": "Tabelle 5, CUI Response Quality (Kurzform)",
+          "source_url": "https://doi.org/10.1145/3631534",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "single_item"
+        },
+        {
+          "name": "dialogue_attentiveness",
+          "title": "Der Chatbot schenkte meinen Aussagen Aufmerksamkeit.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "dialogue_attentiveness",
+          "framework": "CRS-Que",
+          "source_item": "Tabelle 5, CUI Attentiveness (Kurzform)",
+          "source_url": "https://doi.org/10.1145/3631534",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "single_item"
+        },
+        {
+          "name": "perceived_character",
+          "title": "Die Beratung im Chat hatte für mich einen erkennbaren eigenen Charakter (z. B. Tonfall, Persönlichkeit).",
+          "kind": "scale",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "framework": "HELENA",
+          "construct": "manipulation_check",
+          "item_type": "single_item",
+          "source_item": "HELENA – wahrgenommener Charakter als Manipulationscheck",
+          "adaptation": "Eigenes Item; alle Studiengruppen, keine Voraussetzung für den individuellen Einschluss.",
+          "presentation": "likert"
+        }
+      ]
+    },
+    {
+      "id": "control",
+      "title": "Einfluss auf deine Suche",
+      "description": "Denke an deine gerade abgeschlossene Suche. Bewerte jede Aussage von 1 bis 7. Wenn du sie nicht beurteilen kannst, wähle die entsprechende Antwort.",
+      "fields": [
+        {
+          "name": "control_preferences",
+          "title": "Ich hatte die Kontrolle darüber, meine Suchwünsche im Chat zu verändern.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "control",
+          "framework": "CRS-Que",
+          "source_item": "Tabelle 4, User Control, Item 1",
+          "source_url": "https://doi.org/10.1145/3631534",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "multi_item"
+        },
+        {
+          "name": "control_recommendations",
+          "title": "Ich konnte beeinflussen, welche Empfehlungen der Chatbot mir gab.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "control",
+          "framework": "CRS-Que",
+          "source_item": "Tabelle 4, User Control, Item 2",
+          "source_url": "https://doi.org/10.1145/3631534",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "multi_item"
+        },
+        {
+          "name": "control_adjustment",
+          "title": "Ich hatte die Kontrolle darüber, die Empfehlungen an meine Wünsche anzupassen.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "control",
+          "framework": "CRS-Que",
+          "source_item": "Tabelle 4, User Control, Item 3",
+          "source_url": "https://doi.org/10.1145/3631534",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "multi_item"
+        }
+      ]
+    },
+    {
+      "id": "transparency",
+      "title": "Empfehlungen verstehen",
+      "description": "Denke an deine gerade abgeschlossene Suche. Bewerte jede Aussage von 1 bis 7. Wenn du sie nicht beurteilen kannst, wähle die entsprechende Antwort.",
+      "fields": [
+        {
+          "name": "transparency_why",
+          "title": "Ich habe verstanden, warum mir die Stellen empfohlen wurden.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "transparency",
+          "framework": "CRS-Que",
+          "source_item": "Tabelle 4, Transparency, Item 1",
+          "source_url": "https://doi.org/10.1145/3631534",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "multi_item"
+        },
+        {
+          "name": "transparency_assessment",
+          "title": "Ich habe verstanden, wie das System die Eignung der Stellen beurteilt hat.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "transparency",
+          "framework": "CRS-Que",
+          "source_item": "Tabelle 4, Transparency, Item 2",
+          "source_url": "https://doi.org/10.1145/3631534",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "multi_item"
+        },
+        {
+          "name": "transparency_fit",
+          "title": "Ich habe verstanden, wie gut die Empfehlungen zu meinen Wünschen passten.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "transparency",
+          "framework": "CRS-Que",
+          "source_item": "Tabelle 4, Transparency, Item 3",
+          "source_url": "https://doi.org/10.1145/3631534",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "multi_item"
+        }
+      ]
+    },
+    {
+      "id": "outcome",
+      "title": "Dein Gesamturteil",
+      "description": "Denke an deine gerade abgeschlossene Suche. Bewerte jede Aussage von 1 bis 7. Wenn du sie nicht beurteilen kannst, wähle die entsprechende Antwort.",
+      "fields": [
+        {
+          "name": "overall_satisfaction",
+          "title": "Insgesamt bin ich mit dem System zufrieden.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "overall_satisfaction",
+          "framework": "ResQue",
+          "source_item": "Tabelle 2, Overall Satisfaction (Einzelitem)",
+          "source_url": "https://doi.org/10.1145/2043932.2043962",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "single_item"
+        },
+        {
+          "name": "intention_reuse",
+          "title": "So ein System werde ich bei einer weiteren Jobsuche wieder nutzen.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "intention_reuse",
+          "framework": "ResQue",
+          "source_item": "Tabelle 2, Use Intentions, Item 1; Auswahl gemäß Abschnitt 5.1",
+          "source_url": "https://doi.org/10.1145/2043932.2043962",
+          "adaptation": "Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.",
+          "item_type": "single_item"
+        }
+      ]
+    },
+    {
+      "id": "study_experience",
+      "title": "Deine Erfahrung mit der Beratung",
+      "description": "Denke an deine gerade abgeschlossene Suche. Bewerte jede Aussage von 1 bis 7. Wenn du sie nicht beurteilen kannst, wähle die entsprechende Antwort.",
+      "fields": [
+        {
+          "name": "study_effort",
+          "title": "Die Nutzung des Systems war für mich aufwendig.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "study_effort",
+          "framework": "HELENA",
+          "source_item": "HELENA-Zusatzitem Aufwand",
+          "source_url": "",
+          "adaptation": "Studienbezogene Eigenentwicklung; keine Framework-Skala.",
+          "direction": "higher_more_effort",
+          "item_type": "single_item"
+        },
+        {
+          "name": "study_style_control",
+          "title": "Ich konnte den Sprachstil der Beratung an meine persönlichen Vorstellungen anpassen.",
+          "kind": "scale",
+          "level": "ordinal",
+          "presentation": "likert",
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "low": "Stimme überhaupt nicht zu",
+            "high": "Stimme voll und ganz zu",
+            "labels": [
+              "Stimme überhaupt nicht zu",
+              "Stimme nicht zu",
+              "Stimme eher nicht zu",
+              "Weder noch",
+              "Stimme eher zu",
+              "Stimme zu",
+              "Stimme voll und ganz zu"
+            ]
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "construct": "study_style_control",
+          "framework": "HELENA",
+          "source_item": "HELENA-Zusatzitem wahrgenommene Gestaltbarkeit",
+          "source_url": "",
+          "adaptation": "Studienbezogene Eigenentwicklung; keine Framework-Skala.",
+          "item_type": "single_item"
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "title": "Dein Feedback",
+      "description": "Zum Abschluss kannst du uns Verbesserungsvorschläge mitgeben.",
+      "fields": [
+        {
+          "name": "feedback",
+          "kind": "text",
+          "title": "Was hat dir bei deiner Suche geholfen, und was hat dir gefehlt?",
+          "optional": true,
+          "multiline": true,
+          "maxLength": 4000,
+          "hint": "Bitte nenne keine Namen oder anderen personenbezogenen Angaben.",
+          "framework": "HELENA",
+          "construct": "feedback",
+          "source_item": "Studienkontext, kein Framework-Item",
+          "source_url": "",
+          "item_type": "single_item"
+        }
+      ]
+    }
+  ]
+}

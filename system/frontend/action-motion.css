@@ -1,0 +1,71 @@
+/* A persistent visual emphasis, with two broad waves on the next action. */
+.helena-action-motion {
+  --action-wave-reach: 20px;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+.helena-action-motion:is(a, button):not(:disabled) {
+  background: linear-gradient(115deg, #3157e7, #1836b9);
+  color: #fff;
+  border-color: #193cce;
+  box-shadow: 0 0 0 4px #b7c8ff, 0 8px 24px #2347d647;
+  animation: helena-action-arrive 500ms cubic-bezier(.22, 1, .36, 1) both,
+    helena-action-glow 2.2s ease-in-out 500ms infinite;
+}
+.helena-action-motion:not(:disabled)::before,
+.helena-action-motion:not(:disabled)::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 3px solid #416cff;
+  box-shadow: 0 0 12px #416cff66;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  animation: helena-action-wave 2.2s ease-out 200ms infinite;
+}
+.helena-action-motion:not(:disabled)::after { animation-delay: 1.3s; }
+.helena-action-motion:not(:disabled) .helena-action-arrow {
+  flex-shrink: 0;
+  animation: helena-action-arrow 2.2s ease-in-out 200ms infinite;
+}
+.helena-action-motion:is(a, button):focus-visible {
+  outline: 3px solid #15286b;
+  outline-offset: 7px;
+}
+.helena-action-motion:is(a, button):active:not(:disabled) { translate: 0 1px; }
+@keyframes helena-action-arrive {
+  from { translate: 0 8px; }
+  to { translate: 0 0; }
+}
+@keyframes helena-action-glow {
+  0%, 100% { box-shadow: 0 0 0 4px #b7c8ff, 0 8px 24px #2347d647; }
+  50% { box-shadow: 0 0 0 6px #8ba9ff, 0 10px 34px #2347d67a; }
+}
+@keyframes helena-action-wave {
+  0% { inset: -3px; opacity: .95; }
+  70%, 100% { inset: calc(-1 * var(--action-wave-reach)); opacity: 0; }
+}
+@keyframes helena-action-arrow {
+  0%, 44%, 100% { translate: 0 0; }
+  14% { translate: 8px 0; }
+  25% { translate: 0 0; }
+  34% { translate: 5px 0; }
+}
+/* Keep the waves within the narrow mobile gutters. */
+@media (max-width: 620px) {
+  .helena-action-motion { --action-wave-reach: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .helena-action-motion,
+  .helena-action-motion::before,
+  .helena-action-motion::after,
+  .helena-action-motion .helena-action-arrow { animation: none !important; }
+  .helena-action-motion::before,
+  .helena-action-motion::after { display: none; }
+  .helena-action-motion:is(a, button):not(:disabled) {
+    box-shadow: 0 0 0 4px #9fb6ff, 0 8px 24px #2347d647;
+  }
+}

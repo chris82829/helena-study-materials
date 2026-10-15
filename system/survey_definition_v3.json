@@ -1,0 +1,248 @@
+{
+  "version": "helena-v3",
+  "scale": {
+    "min": 1,
+    "max": 10,
+    "low": "Trifft überhaupt nicht zu",
+    "high": "Trifft voll und ganz zu"
+  },
+  "demographics": {
+    "id": "demographics",
+    "title": "Ein paar Angaben zu dir",
+    "description": "Du kannst die Angaben bereits während der Suche machen und hier prüfen oder ergänzen. Bei persönlichen Angaben ist auch „Keine Angabe“ möglich.",
+    "fields": [
+      {
+        "name": "age_group",
+        "title": "Wie alt bist du?",
+        "kind": "choice",
+        "options": [
+          [
+            "under_18",
+            "Unter 18 Jahren"
+          ],
+          [
+            "18_20",
+            "18–20 Jahre"
+          ],
+          [
+            "21_24",
+            "21–24 Jahre"
+          ],
+          [
+            "25_29",
+            "25–29 Jahre"
+          ],
+          [
+            "30_39",
+            "30–39 Jahre"
+          ],
+          [
+            "40_plus",
+            "40 Jahre oder älter"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ]
+      },
+      {
+        "name": "gender",
+        "title": "Welchem Geschlecht ordnest du dich zu?",
+        "kind": "choice",
+        "options": [
+          [
+            "female",
+            "Weiblich"
+          ],
+          [
+            "male",
+            "Männlich"
+          ],
+          [
+            "diverse",
+            "Divers"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ]
+      },
+      {
+        "name": "education",
+        "title": "Was beschreibt deine aktuelle Situation am besten?",
+        "kind": "choice",
+        "options": [
+          [
+            "bachelor",
+            "Bachelorstudium"
+          ],
+          [
+            "master",
+            "Masterstudium"
+          ],
+          [
+            "other_studies",
+            "Anderes Studium"
+          ],
+          [
+            "doctorate",
+            "Promotion"
+          ],
+          [
+            "training",
+            "Schule oder Ausbildung"
+          ],
+          [
+            "not_studying",
+            "Aktuell nicht im Studium oder in Ausbildung"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ]
+      },
+      {
+        "name": "study_field",
+        "title": "Was ist deine Studien- oder Fachrichtung?",
+        "kind": "text",
+        "optional": true,
+        "maxLength": 160,
+        "hint": "Du kannst dieses Feld auch leer lassen."
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "search_context",
+      "title": "Dein Suchvorhaben",
+      "description": "Beschreibe kurz, wofür du HELENA gerade genutzt hast.",
+      "fields": [
+        {
+          "name": "search_goal",
+          "title": "Wonach hast du mit HELENA gesucht?",
+          "kind": "text",
+          "multiline": true,
+          "minLength": 3,
+          "maxLength": 1000,
+          "hint": "Nenne den Tätigkeitsbereich, die gewünschte Stellenart und die Suchwünsche, die für dich wichtig waren. Auch wenn du das Beispielprofil genutzt hast, beschreibe kurz das Suchvorhaben."
+        }
+      ]
+    },
+    {
+      "id": "personality",
+      "title": "Deine KI-Suchpersönlichkeit",
+      "description": "Wie hast du das Gestalten und die Wirkung deiner Persönlichkeit erlebt?",
+      "fields": [
+        {
+          "name": "personality_clarity",
+          "kind": "scale",
+          "title": "Mir war klar, wie meine KI-Suchpersönlichkeit die Suche und das Gespräch beeinflusst."
+        },
+        {
+          "name": "personality_setup",
+          "kind": "scale",
+          "title": "Ich konnte die KI-Suchpersönlichkeit so gestalten, wie ich beraten werden möchte."
+        },
+        {
+          "name": "personality_consistency",
+          "kind": "scale",
+          "title": "Die gewählten Eigenschaften waren in der Beratung erkennbar."
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "title": "Suchen im Gespräch",
+      "description": "Wie hat dich der Austausch mit deiner KI-Suchpersönlichkeit beim Suchen unterstützt?",
+      "fields": [
+        {
+          "name": "chat_helpfulness",
+          "kind": "scale",
+          "title": "Der Chat hat mir geholfen, meine Suchwünsche zu konkretisieren."
+        },
+        {
+          "name": "search_refinement",
+          "kind": "scale",
+          "title": "Ich konnte meine Suche im Gespräch gezielt weiterentwickeln."
+        },
+        {
+          "name": "explanation_helpfulness",
+          "kind": "scale",
+          "title": "Die Begründungen haben mir geholfen, die Perspektive meiner KI-Suchpersönlichkeit nachzuvollziehen."
+        }
+      ]
+    },
+    {
+      "id": "usefulness",
+      "title": "Was war nützlich?",
+      "description": "Wie hilfreich waren die einzelnen Funktionen für deine Jobsuche?",
+      "fields": [
+        {
+          "name": "score_usefulness",
+          "topic": "Score",
+          "kind": "scale",
+          "title": "Wie nützlich war der Score, um dir einen Überblick über die Stellen zu verschaffen?",
+          "scale": {
+            "low": "Gar nicht nützlich",
+            "high": "Sehr nützlich"
+          }
+        },
+        {
+          "name": "match_reasons_usefulness",
+          "topic": "Warum eine Stelle passt",
+          "kind": "scale",
+          "title": "Wie nützlich waren die Stichpunkte „Warum das passen könnte“, um die Empfehlung nachzuvollziehen?",
+          "scale": {
+            "low": "Gar nicht nützlich",
+            "high": "Sehr nützlich"
+          }
+        },
+        {
+          "name": "personalized_chat_usefulness",
+          "topic": "Personalisierter Chatbot",
+          "kind": "scale",
+          "title": "Wie nützlich war der Chatbot mit deiner gewählten Persönlichkeit für das Besprechen deiner Suche?",
+          "scale": {
+            "low": "Gar nicht nützlich",
+            "high": "Sehr nützlich"
+          }
+        },
+        {
+          "name": "personalized_search_usefulness",
+          "topic": "Personalisierte Suche",
+          "kind": "scale",
+          "title": "Wie nützlich war es, dass deine KI-Suchpersönlichkeit die Bewertung und Reihenfolge der Stellen mitbestimmt hat?",
+          "scale": {
+            "low": "Gar nicht nützlich",
+            "high": "Sehr nützlich"
+          }
+        }
+      ]
+    },
+    {
+      "id": "overall",
+      "title": "Deine Gesamterfahrung",
+      "description": "Zum Abschluss geht es um deinen Eindruck vom Suchen mit einer einstellbaren KI-Suchpersönlichkeit.",
+      "fields": [
+        {
+          "name": "search_ease",
+          "kind": "scale",
+          "title": "Die Suche mit einer einstellbaren KI-Suchpersönlichkeit war einfach zu bedienen."
+        },
+        {
+          "name": "personality_value",
+          "kind": "scale",
+          "title": "Die einstellbare KI-Suchpersönlichkeit hat mir bei der Gestaltung meiner Suche einen Mehrwert geboten."
+        },
+        {
+          "name": "future_use",
+          "kind": "scale",
+          "title": "Ich würde eine solche KI-Suchpersönlichkeit bei zukünftigen Jobsuchen wieder nutzen."
+        }
+      ]
+    }
+  ]
+}

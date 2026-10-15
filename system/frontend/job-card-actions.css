@@ -1,0 +1,17 @@
+.job-card-footer{container-type:inline-size;border-top:1px solid #ecedf1;margin-top:17px}
+.job-card-actions{display:flex;align-items:center;gap:16px;min-height:49px}
+.job-card-actions>button{display:flex;align-items:center;gap:7px;min-height:44px;padding:8px 0;background:transparent;text-align:left;border-radius:5px;line-height:1.4}
+.job-card-actions>button:focus-visible{outline:3px solid #7698ff;outline-offset:2px}
+.job-action-details{flex-shrink:0;color:#526077;font-size:14px;font-weight:550;white-space:nowrap}
+.job-action-details>svg{transition:transform 140ms ease}
+.job-action-details[aria-expanded=true]>svg{transform:rotate(180deg)}
+.job-action-chat{margin-left:auto;min-width:0;max-width:100%;color:#4766a5;font-size:13px}
+.job-action-chat:not(:disabled):hover,.job-action-details:hover{color:#244ddb}
+.job-action-chat .inline-compass{flex-shrink:0}
+.job-chat-label-full{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.job-details-label-compact,.job-chat-label-compact{display:none}
+.job-card-footer>.detail-content{padding-top:8px}
+.job-card-footer>.detail-content[hidden]{display:none}
+@container(max-width:440px){.job-chat-label-full,.job-action-chat>svg{display:none}.job-chat-label-compact{display:inline}}
+@container(max-width:300px){.job-details-label-full{display:none}.job-details-label-compact{display:inline}}
+@media(prefers-reduced-motion:reduce){.job-action-details>svg{transition:none}}

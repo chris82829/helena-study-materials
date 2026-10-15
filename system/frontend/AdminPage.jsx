@@ -1,0 +1,103 @@
+import React, {useEffect,useRef,useState} from 'react';
+import {Download,LogOut,Search,ShieldCheck,Trash2,X,Play,Pause} from 'lucide-react';
+import './admin.css';
+import AdminAnalytics from './AdminAnalytics.jsx';
+import AdminPersonalityUsage from './AdminPersonalityUsage.jsx';
+import AdminOperationMetrics from './AdminOperationMetrics.jsx';
+import AdminAnswerEditor, {AdminCorrectionHistory} from './AdminAnswerEditor.jsx';
+
+async function api(path,options={}){
+ const response=await fetch('/api/admin'+path,options);
+ const data=await response.json();
+ if(!response.ok){const error=new Error(data.error?.message || 'Anfrage fehlgeschlagen.');error.status=response.status;throw error;}
+ return data;
+}
+export function AdminDeleteDialog({row,busy,error,onClose,onDelete}){
+ const ref=useRef(null);
+ const [confirmation,setConfirmation]=useState('');
+ useEffect(()=>{ref.current.showModal();},[]);
+ return <dialog ref={ref} className="admin-delete" onCancel={event=>{event.preventDefault();if(!busy)onClose();}}><h2>Teilnahme löschen?</h2><p><strong>{row.participation_id}</strong></p><p>{row.deletion_count} gespeicherte Antwort{row.deletion_count===1?'':'en'} dieser Teilnahme werden gelöscht.{row.consent_linked?' Die Einwilligung wird widerrufen und weitere Anfragen werden gesperrt.':''}</p><p>Bereits heruntergeladene Exportdateien musst du gesondert bereinigen.</p><label>Teilnahme-ID zur Bestätigung<input autoComplete="off" value={confirmation} onChange={event=>setConfirmation(event.target.value)} disabled={busy}/></label>{error && <p role="alert" className="admin-error">{error}</p>}<div className="admin-dialog-actions"><button onClick={onClose} disabled={busy}>Abbrechen</button><button className="admin-danger" onClick={onDelete} disabled={busy || confirmation!==row.participation_id}>{busy?'Wird gelöscht …':'Teilnahme endgültig löschen'}</button></div></dialog>;
+}
+export function AdminModal({children,onClose,label}){
+ const ref=useRef(null);
+ useEffect(()=>{const element=ref.current;element.showModal();return()=>element.close();},[]);
+ return <dialog ref={ref} className="admin-modal" aria-label={label} onCancel={event=>{event.preventDefault();onClose();}}>{children}</dialog>;
+}
+export function AdminBulkDeleteDialog({preview,busy,error,onClose,onDelete}){
+ const [confirmation,setConfirmation]=useState('');
+ return <AdminModal label="Alle Teilnahmen löschen" onClose={()=>{if(!busy)onClose();}}><div className="admin-detail"><h2>Alle Teilnahmen löschen?</h2><p>Dies betrifft alle Versionen und Varianten, unabhängig von deinen Filtern.</p><p><strong>{preview.responses} abgeschlossene Antworten · {preview.drafts} Entwürfe · {preview.active_consents} aktive Teilnahmen</strong></p><p>Auch Gruppenzuordnungen und verknüpfte Suchsitzungen werden gelöscht. Bisherige Teilnahmezugänge werden gesperrt. Neue Personen können weiterhin teilnehmen, wenn die Umfrage freigegeben ist.</p><p>Die Löschung ist nicht rückgängig zu machen. Heruntergeladene Exporte und Sicherungskopien musst du separat bereinigen. Gesperrte Einwilligungskennungen bleiben zum Schutz vor erneuten Übermittlungen erhalten.</p><label>Zur Bestätigung ALLE TEILNAHMEN LÖSCHEN eingeben<input autoComplete="off" value={confirmation} onChange={event=>setConfirmation(event.target.value)} disabled={busy}/></label>{error && <p role="alert" className="admin-error">{error}</p>}<div className="admin-dialog-actions"><button disabled={busy} onClick={onClose}>Abbrechen</button><button className="admin-danger" disabled={busy||confirmation!=='ALLE TEILNAHMEN LÖSCHEN'} onClick={()=>onDelete(confirmation)}>{busy?'Wird gelöscht …':'Alle Teilnahmen endgültig löschen'}</button></div></div></AdminModal>;
+}
+export function AdminAnswerDetail({row,definition,onClose,onDelete,editing=false,onEdit,onCancelEdit,onSave,saveBusy=false,saveError='',saved=false}){
+ definition=row.definition || definition;
+ const fields=[definition.demographics,...definition.categories].flatMap(group=>group.fields);
+ function label(name){return fields.find(field=>field.name===name)?.title || name;}
+ function value(name,raw){const field=fields.find(field=>field.name===name);return [...(field?.options || []),...(field?.nonresponse || [])].find(([key])=>key===raw)?.[1] ?? (raw===null?(row.response_status==='in_progress'?'Noch nicht beantwortet / nicht gestellt':'Übersprungen'):raw===''?'Keine Angabe':String(raw));}
+ return <section className="admin-detail" aria-label="Einzelantwort"><div className="admin-detail-heading"><div><p className="admin-kicker">EINZELANTWORT</p><h2>{row.participation_id}</h2></div><button aria-label="Einzelantwort schließen" disabled={editing || saveBusy} onClick={onClose}><X size={20}/></button></div><p>{row.response_status==='in_progress'?'Unvollständig · ':'Abgeschlossen · '}{row.survey_version}{row.study_arm ? ` · Variante ${row.study_arm}` : ''} · {row.openai_models.length?row.openai_models.join(', '):'Modellstand nicht dokumentiert'}</p><AdminPersonalityUsage usage={row.personality_usage}/><AdminOperationMetrics metrics={row.operation_metrics}/>{editing ? <AdminAnswerEditor row={row} busy={saveBusy} error={saveError} onCancel={onCancelEdit} onSave={onSave}/> : <>{saved && <p role="status" className="admin-saved">Korrektur gespeichert. Diagramme und Downloads verwenden diesen Antwortstand.</p>}<dl>{Object.entries(row.answers).map(([name,raw])=><div key={name}><dt>{row.survey_version==='helena-v1'?'V1 · ':''}{label(name)}</dt><dd>{value(name,raw)}</dd></div>)}</dl><div className="admin-detail-actions">{row.editable && <button className="admin-primary" onClick={onEdit}>Antworten bearbeiten</button>}<button className="admin-danger" onClick={onDelete}><Trash2 size={16}/>Teilnahme löschen</button></div><AdminCorrectionHistory row={row}/></>}</section>;
+}
+export function AdminStudyControl({study,busy,onToggle}){
+ return <section className={'admin-study '+(study?.enabled?'is-open':'is-paused')} aria-label="Teilnahme freigeben"><div><h2>Umfrage freigeben</h2><p role="status"><strong>{!study?'Status wird geladen …':study.closed?'Studie beendet':study.enabled?'Teilnahme freigegeben':'Teilnahme pausiert'}</strong></p><p>Du bestimmst, wann die Umfrage genutzt werden kann. Beim Pausieren bleiben gespeicherte Antworten erhalten; neue Teilnahmen und weitere Such-, Chat- und Antwortanfragen werden gesperrt.</p></div><button type="button" className={study?.enabled?'':'admin-primary'} disabled={busy || !study || study.closed || (!study.enabled && !study.can_enable)} onClick={onToggle}>{study?.enabled?<Pause size={18}/>:<Play size={18}/>} {busy?'Wird gespeichert …':study?.enabled?'Umfrage pausieren':'Umfrage freigeben'}</button></section>;
+}
+export function AdminResponseScope({value,onChange,disabled=false}){
+ return <section className="admin-response-scope" aria-label="Teilnahmen für Diagramme und Downloads"><label>Welche Teilnahmen sollen einfließen?<select value={value} disabled={disabled} onChange={event=>onChange(event.target.value)}><option value="completed">Nur abgeschlossene Umfragen</option><option value="">Abgeschlossene und unvollständige Umfragen</option><option value="in_progress">Nur unvollständige Umfragen</option></select></label><p>Gilt sofort für Diagramme, Einzelantworten und Downloads. Bei unvollständigen Umfragen zählen die bereits gespeicherten Antworten; fehlende Antworten werden nicht als 0 gewertet.</p></section>;
+}
+export default function AdminPage({initialAuth=null}){
+ const [auth,setAuth]=useState(initialAuth),[password,setPassword]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');
+ const [data,setData]=useState(null),[query,setQuery]=useState(''),[version,setVersion]=useState('helena-v14'),[arm,setArm]=useState(''),[filter,setFilter]=useState({q:'',version:'helena-v14',status:'completed',arm:'',page:1}),[refresh,setRefresh]=useState(0);
+ const [row,setRow]=useState(null),[deleting,setDeleting]=useState(false),[deleteError,setDeleteError]=useState('');
+ const [editing,setEditing]=useState(false),[saveBusy,setSaveBusy]=useState(false),[saveError,setSaveError]=useState(''),[saved,setSaved]=useState(false);
+ const [study,setStudy]=useState(null),[studyBusy,setStudyBusy]=useState(false);
+ const [analysis,setAnalysis]=useState(null),[analysisLoading,setAnalysisLoading]=useState(false),[analysisError,setAnalysisError]=useState('');
+ const [view,setView]=useState('charts'),[selecting,setSelecting]=useState(false),[bulk,setBulk]=useState(null);
+ const [exportColumns,setExportColumns]=useState('readable');
+ const selection=useRef(0);
+ useEffect(()=>{
+  if(!auth?.authenticated){setAnalysis(null);return;}
+  const controller=new AbortController();setAnalysisLoading(true);setAnalysisError('');
+  api('/analytics?'+new URLSearchParams({q:filter.q,version:filter.version,status:filter.status,arm:filter.arm}),{signal:controller.signal}).then(setAnalysis).catch(failure=>{if(failure.name!=='AbortError'){setAnalysisError(failure.message);if(failure.status===401)setAuth({configured:true,authenticated:false});}}).finally(()=>{if(!controller.signal.aborted)setAnalysisLoading(false);});
+  return()=>controller.abort();
+ },[auth?.authenticated,filter.q,filter.version,filter.status,filter.arm,refresh]);
+ async function prepareBulk(){setBusy(true);setError('');setDeleteError('');try{setBulk(await api('/deletion-preview'));}catch(failure){setError(failure.message);}finally{setBusy(false);}}
+ async function removeAll(confirmation){setBusy(true);setDeleteError('');try{await api('/responses',{method:'DELETE',headers:{'Content-Type':'application/json','X-CSRF-Token':auth.csrf},body:JSON.stringify({confirmation,fingerprint:bulk.fingerprint})});setBulk(null);setRow(null);selection.current++;setRefresh(value=>value+1);}catch(failure){setDeleteError(failure.message);}finally{setBusy(false);}}
+
+ useEffect(()=>{document.title='HELENA · Umfrageverwaltung';api('/session').then(setAuth).catch(failure=>setError(failure.message));},[]);
+ useEffect(()=>{
+  if(!auth?.authenticated)return;
+  const controller=new AbortController();setError('');
+  api('/responses?'+new URLSearchParams(filter),{signal:controller.signal}).then(setData).catch(failure=>{if(failure.name==='AbortError')return;if(failure.status===401){setAuth({configured:true,authenticated:false});setData(null);setRow(null);}setError(failure.message);});
+  return()=>controller.abort();
+ },[auth?.authenticated,filter,refresh]);
+ useEffect(()=>{
+  if(!auth?.authenticated){setStudy(null);return;}
+  const controller=new AbortController();
+  api('/study-status',{signal:controller.signal}).then(setStudy).catch(failure=>{if(failure.name!=='AbortError')setError(failure.message);});
+  return()=>controller.abort();
+ },[auth?.authenticated]);
+ async function toggleStudy(){
+  if(!study || studyBusy)return;
+  setStudyBusy(true);setError('');
+  try{setStudy(await api('/study-status',{method:'PUT',headers:{'Content-Type':'application/json','X-CSRF-Token':auth.csrf},body:JSON.stringify({enabled:!study.enabled})}));}
+  catch(failure){setError(failure.message);}
+  finally{setStudyBusy(false);}
+ }
+ async function login(event){event.preventDefault();if(busy)return;setBusy(true);setError('');try{setAuth(await api('/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})}));setPassword('');}catch(failure){setError(failure.message);}finally{setBusy(false);}}
+ async function logout(){try{await api('/logout',{method:'POST',headers:{'X-CSRF-Token':auth.csrf}});selection.current++;setAuth({configured:true,authenticated:false});setData(null);setRow(null);}catch(failure){setError(failure.message);}}
+ async function select(item){const ticket=++selection.current;setSelecting(true);setError('');setEditing(false);setSaved(false);setSaveError('');try{const selected=await api('/responses/'+item.id);if(ticket===selection.current)setRow(selected);}catch(failure){setError(failure.message);}finally{if(ticket===selection.current)setSelecting(false);}}
+ function closeDetail(){if(editing || saveBusy)return;selection.current++;setRow(null);}
+ async function saveCorrection(body){if(saveBusy)return;setSaveBusy(true);setSaveError('');try{const updated=await api('/responses/'+row.id,{method:'PUT',headers:{'Content-Type':'application/json','X-CSRF-Token':auth.csrf},body:JSON.stringify(body)});setRow(updated);setEditing(false);setSaved(true);setRefresh(value=>value+1);}catch(failure){setSaveError(failure.message);}finally{setSaveBusy(false);}}
+ async function remove(){if(busy)return;setBusy(true);setDeleteError('');try{await api('/responses/'+row.id,{method:'DELETE',headers:{'Content-Type':'application/json','X-CSRF-Token':auth.csrf},body:JSON.stringify({confirm_id:row.participation_id})});setDeleting(false);setRow(null);selection.current++;setRefresh(value=>value+1);}catch(failure){setDeleteError(failure.message);}finally{setBusy(false);}}
+ async function download(format){setBusy(true);setError('');try{const response=await fetch('/api/admin/export?'+new URLSearchParams({q:filter.q,version:filter.version,status:filter.status,arm:filter.arm,format,columns:exportColumns}));if(!response.ok)throw new Error('Download fehlgeschlagen. Bitte Anmeldung prüfen.');const blob=await response.blob(),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=format==='zip'?'helena_auswertung.zip':'helena_numiqo.csv';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}catch(failure){setError(failure.message);}finally{setBusy(false);}}
+ if(!auth?.authenticated)return <main className="admin-page"><form className="admin-login" onSubmit={login}><ShieldCheck size={30}/><h1>HELENA Umfrageverwaltung</h1><p>Geschützter Zugang zu deinen Forschungsergebnissen.</p>{auth?.configured===false?<p>Der Zugang muss auf dem Server eingerichtet werden.</p>:<><label>Passwort<input type="password" autoComplete="current-password" value={password} onChange={event=>setPassword(event.target.value)} required maxLength={200}/></label><button className="admin-primary" disabled={busy || !auth}>{busy?'Anmelden …':'Anmelden'}</button></>}{error && <p className="admin-error" role="alert">{error}</p>}<a href="/">Zur HELENA-Startseite</a></form></main>;
+ return <main className="admin-page"><div className="admin-container"><header className="admin-heading"><div><p className="admin-kicker">HELENA · FORSCHUNG</p><h1>Umfrageergebnisse</h1></div><button onClick={logout}><LogOut size={16}/>Abmelden</button></header>{error && <p className="admin-error" role="alert">{error}</p>}
+ <AdminStudyControl study={study} busy={studyBusy} onToggle={toggleStudy}/>
+ <section className="admin-overview"><div><strong>{data?.total??'…'}</strong><span>Teilnahmen in der Auswahl</span></div><div><strong>{data?.current_release?.openai_model??'…'}</strong><span>Aktueller Modellstand · Denkaufwand none</span></div></section>
+ <AdminResponseScope value={filter.status} disabled={busy} onChange={status=>setFilter(previous=>({...previous,status,page:1}))}/>
+ <section className="admin-export"><div><h2>Für Numiqo herunterladen</h2><p>Die Auswahl oben gilt auch für beide Downloads. Eine Zeile pro Teilnahme · numerische Bewertungen · leere Zellen für fehlende Werte. Das Paket enthält zusätzlich Codebuch, Spaltenzuordnung, Systemstände und einen ausdrücklich ungefilterten Teilnahmefluss mit aggregierten Gruppenfallzahlen.</p><label>Spaltennamen<select value={exportColumns} onChange={event=>setExportColumns(event.target.value)} disabled={busy}><option value="readable">Deutsch · verständliche Namen</option><option value="technical">Technisch · bisherige Schlüssel</option></select></label><p className="admin-small">In Numiqo unter „Import/Export“ die CSV-Datei öffnen. Der Download berücksichtigt deine Filter.</p></div><div><button className="admin-primary" disabled={busy || !data} onClick={()=>download('csv')}><Download size={17}/>CSV für Numiqo</button><button disabled={busy || !data} onClick={()=>download('zip')}><Download size={17}/>Auswertungspaket</button></div></section>
+ <form className="admin-filters" onSubmit={event=>{event.preventDefault();setFilter({q:query.trim(),version,status:filter.status,arm,page:1});}}><label>Teilnahme-ID<input value={query} onChange={event=>setQuery(event.target.value)} maxLength={100} placeholder="ID suchen …"/></label><label>Fragebogen<select value={version} onChange={event=>setVersion(event.target.value)}><option value="">Alle Versionen</option><option value="helena-v14">v14 · HELENA (7-stufig)</option><option value="helena-v10">v10 · verkürzter Fragebogen A/B/C</option><option value="helena-v9">v9 · vorheriger Fragebogen A/B/C</option><option value="helena-v8">v8 · früherer Vergleich A/B/C</option><option value="helena-v7">v7 · früherer Vergleich A/B</option><option value="helena-v6">v6 · frühere Vergleichserhebung</option><option value="helena-v5">v5 · Bewertungen 1–10</option><option value="helena-v4">v4 · passende Fragetypen</option><option value="helena-v3">v3 · 13 Bewertungen</option><option value="helena-v2">v2 · 9 Bewertungen</option><option value="helena-v1">v1 · erste Umfrage</option></select></label><label>Studienvariante<select value={arm} onChange={event=>setArm(event.target.value)}><option value="">Alle Varianten</option><option value="A">A · Standardberatung (v9/v10) / Basisvariante (älter)</option><option value="B">B · Vorlagen (v8–v10) / selbst gestaltbar (älter)</option><option value="C">C · Selbst gestaltbar (v8–v10)</option></select></label><button type="submit"><Search size={16}/>Filtern</button></form>
+ <div className="admin-view-controls"><div role="group" aria-label="Ergebnisansicht"><button className={view==='charts'?'admin-primary':''} aria-pressed={view==='charts'} onClick={()=>setView('charts')}>Diagramme</button><button className={view==='answers'?'admin-primary':''} aria-pressed={view==='answers'} onClick={()=>setView('answers')}>Einzelantworten</button></div><button disabled={busy||analysisLoading} onClick={()=>setRefresh(value=>value+1)}>Aktualisieren</button></div>
+ {selecting && <p role="status">Einzelantwort wird geöffnet …</p>}
+ {view==='charts' && <AdminAnalytics data={analysis} loading={analysisLoading} error={analysisError} onSelect={select}/>}
+ {view==='answers' && <div className="admin-results"><section className="admin-table-section"><div className="admin-table-scroll"><table><thead><tr><th>Teilnahme-ID</th><th>Zuletzt gespeichert</th><th>Status</th><th>Fragebogen</th><th>Variante</th><th><span className="sr-only">Aktion</span></th></tr></thead><tbody>{data?.items.map(item=><tr key={item.id} className={row?.id===item.id?'is-selected':''}><td>{item.participation_id}</td><td>{new Date(item.last_saved_at_utc || item.submitted_at_utc).toLocaleString('de-DE')}</td><td>{item.response_status==='in_progress'?'Unvollständig':'Abgeschlossen'}</td><td>{item.survey_version}</td><td>{item.study_arm || "–"}</td><td><button disabled={selecting} onClick={()=>select(item)}>Ansehen</button></td></tr>)}</tbody></table></div>{data?.items.length===0 && <p className="admin-empty">Keine Antworten in dieser Auswahl.</p>}<nav className="admin-pagination" aria-label="Ergebnisseiten"><button disabled={filter.page<=1} onClick={()=>setFilter({...filter,page:filter.page-1})}>Zurück</button><span>Seite {filter.page} von {Math.max(1,Math.ceil((data?.total||0)/25))}</span><button disabled={!data || filter.page*25>=data.total} onClick={()=>setFilter({...filter,page:filter.page+1})}>Weiter</button></nav></section></div>}
+ <p className="admin-footnote">Modellstände werden nur zugeordnet, wenn sie während der Teilnahme dokumentiert wurden. Bei älteren Antworten bleibt die Zuordnung leer.</p>
+ <section className="admin-danger-zone"><div><h2>Teilnahmen löschen</h2><p>Löscht sämtliche Antworten und Entwürfe aller Versionen. Die aktuellen Filter gelten hier nicht.</p></div><button className="admin-danger" disabled={busy} onClick={prepareBulk}><Trash2 size={16}/>Alle Teilnahmen löschen</button></section>
+ </div>{row && !deleting && <AdminModal label="Einzelantwort" onClose={closeDetail}><AdminAnswerDetail row={row} definition={data?.definition} onClose={closeDetail} onDelete={()=>{setDeleteError('');setDeleting(true);}} editing={editing} onEdit={()=>{setSaveError('');setSaved(false);setEditing(true);}} onCancelEdit={()=>{setEditing(false);setSaveError('');}} onSave={saveCorrection} saveBusy={saveBusy} saveError={saveError} saved={saved}/></AdminModal>}{bulk && <AdminBulkDeleteDialog preview={bulk} busy={busy} error={deleteError} onClose={()=>setBulk(null)} onDelete={removeAll}/>}{deleting && row && <AdminDeleteDialog row={row} busy={busy} error={deleteError} onClose={()=>setDeleting(false)} onDelete={remove}/>}</main>;
+}

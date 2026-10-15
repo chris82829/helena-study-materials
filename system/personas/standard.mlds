@@ -1,0 +1,23 @@
+{
+  "format": "HELENA-Personality-MLDS",
+  "schema_version": 1,
+  "provenance": {
+    "method": "Meta-Language-defined Structures",
+    "reference": "https://doi.org/10.15439/2025F5613",
+    "origin": "builtin"
+  },
+  "template": {
+    "id": "standard",
+    "subtitle": "Feste sachliche Standardberatung",
+    "summary": "Kompetente Jobsuche mit ausgewogener Bewertung und sachlichem Gesprächsstil; ohne wählbare Persönlichkeit.",
+    "selectable": false
+  },
+  "personality": {
+    "mode": "preset",
+    "preset": "standard",
+    "name": "Standardberatung",
+    "description": "",
+    "traits": [],
+    "focus": "ausgewogen"
+  }
+}

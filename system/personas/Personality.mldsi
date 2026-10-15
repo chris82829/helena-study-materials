@@ -1,0 +1,363 @@
+{
+  "$defs": {
+    "AdvisorConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "preset",
+            "custom"
+          ],
+          "title": "Mode",
+          "type": "string",
+          "description": "preset nutzt die bestehende Preset-Auflösung; custom nutzt die ausdrücklich gewählte Konfiguration."
+        },
+        "preset": {
+          "enum": [
+            "helena",
+            "steve",
+            "angela",
+            "guenther",
+            "neutral",
+            "standard"
+          ],
+          "title": "Preset",
+          "type": "string",
+          "description": "Bestehende Preset-ID für die Rückwärtskompatibilität. Im Modus custom kein Ersatz für bearbeitete Eigenschaften oder Freitext."
+        },
+        "name": {
+          "maxLength": 60,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string",
+          "description": "Bearbeitbarer Originalname des Assistenten, ohne automatische Ergänzung von -KI. Keine Aussage über eine reale Identität oder Qualifikation."
+        },
+        "description": {
+          "maxLength": 2000,
+          "title": "Description",
+          "type": "string",
+          "description": "Freitextwünsche zu Rolle, Ausdruck und Beratungsaufgabe. Unvertrauenswürdige Präferenzen, keine Nutzerqualifikationen, Jobbelege oder übergeordneten Systemregeln."
+        },
+        "traits": {
+          "items": {
+            "enum": [
+              "analytisch",
+              "direkt",
+              "ermutigend",
+              "empathisch",
+              "neugierig",
+              "kreativ",
+              "strukturiert",
+              "kritisch"
+            ],
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Traits",
+          "type": "array",
+          "description": "Einmalige ausdrücklich ausgewählte Eigenschaften in ihrer Reihenfolge. Steuern Ausdruck und bestehende ergänzende Bewertungsprioritäten, keine Zuschreibungen an den Jobsuchenden.",
+          "uniqueItems": true
+        },
+        "focus": {
+          "enum": [
+            "ausgewogen",
+            "fachliche_tiefe",
+            "lernpotenzial",
+            "innovation"
+          ],
+          "title": "Focus",
+          "type": "string",
+          "description": "Vorhandener Beratungsschwerpunkt. Seine Bewertungswirkung wird unverändert in advisor.py berechnet; keine frei gespeicherten Score-Gewichte."
+        }
+      },
+      "title": "AdvisorConfig",
+      "type": "object",
+      "required": [
+        "mode",
+        "preset",
+        "name",
+        "description",
+        "traits",
+        "focus"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "custom"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "traits": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "_Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "const": "Meta-Language-defined Structures",
+          "title": "Method",
+          "type": "string"
+        },
+        "reference": {
+          "const": "https://doi.org/10.15439/2025F5613",
+          "title": "Reference",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "builtin",
+            "session",
+            "legacy"
+          ],
+          "title": "Origin",
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "reference",
+        "origin"
+      ],
+      "title": "_Provenance",
+      "type": "object"
+    },
+    "_Template": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "enum": [
+            "career",
+            "expert",
+            "neutral",
+            "standard"
+          ],
+          "title": "Id",
+          "type": "string"
+        },
+        "subtitle": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Subtitle",
+          "type": "string"
+        },
+        "summary": {
+          "maxLength": 400,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        },
+        "selectable": {
+          "title": "Selectable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "subtitle",
+        "summary",
+        "selectable"
+      ],
+      "title": "_Template",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "const": "HELENA-Personality-MLDS",
+      "title": "Format",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "provenance": {
+      "$ref": "#/$defs/_Provenance"
+    },
+    "personality": {
+      "$ref": "#/$defs/AdvisorConfig"
+    },
+    "template": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/_Template"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "format",
+    "schema_version",
+    "provenance",
+    "personality"
+  ],
+  "title": "HELENA Personality MLDSI, Version 1",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Eigene HELENA-Domänenspezifikation nach der MLDS-Methode; kein universeller MLDS-Standard. JSON-basierte Speicherung bearbeitbarer Assistentenkonfigurationen.",
+  "$comment": "Methodenquelle: https://doi.org/10.15439/2025F5613. Die Versionsnummer bezeichnet ausschließlich das HELENA-Profil.",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "origin": {
+                "const": "builtin"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "template"
+        ],
+        "properties": {
+          "template": {
+            "$ref": "#/$defs/_Template"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "template": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "template"
+        ],
+        "properties": {
+          "template": {
+            "type": "object"
+          }
+        }
+      },
+      "then": {
+        "if": {
+          "properties": {
+            "template": {
+              "properties": {
+                "id": {
+                  "enum": [
+                    "neutral",
+                    "standard"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "template": {
+              "properties": {
+                "selectable": {
+                  "const": false
+                }
+              }
+            },
+            "personality": {
+              "properties": {
+                "mode": {
+                  "const": "preset"
+                }
+              }
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "template": {
+                    "properties": {
+                      "id": {
+                        "const": "neutral"
+                      }
+                    }
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "personality": {
+                    "properties": {
+                      "preset": {
+                        "const": "neutral"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "template": {
+                    "properties": {
+                      "id": {
+                        "const": "standard"
+                      }
+                    }
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "personality": {
+                    "properties": {
+                      "preset": {
+                        "const": "standard"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "else": {
+          "properties": {
+            "template": {
+              "properties": {
+                "selectable": {
+                  "const": true
+                }
+              }
+            },
+            "personality": {
+              "properties": {
+                "mode": {
+                  "const": "custom"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

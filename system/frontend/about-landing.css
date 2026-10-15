@@ -1,0 +1,116 @@
+.about-page.about-landing {
+  min-height: 100dvh;
+  padding: 64px 32px 56px;
+  background: #fff;
+}
+
+.about-landing .about-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-landing .about-landing-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  align-items: center;
+  gap: 48px;
+}
+
+.about-landing .about-project {
+  min-width: 0;
+  max-width: none;
+}
+
+.about-landing .about-project h1 { overflow-wrap: anywhere; }
+.about-landing .about-launch { min-width: 0; }
+
+.about-landing .about-start-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  max-width: 340px;
+  min-height: 92px;
+  padding: 20px 22px;
+  border: 1px solid #1843c2;
+  border-radius: 14px;
+  background: #2452dd;
+  color: #fff;
+  box-shadow: 0 4px 0 #173dac, 0 10px 24px #2452dd29;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.35;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: background-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+.about-landing .about-start-link > span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.about-landing .about-start-arrow {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff24;
+}
+
+.about-landing .about-start-link:focus-visible {
+  outline: 3px solid #7698ff;
+  outline-offset: 6px;
+}
+
+@media (hover: hover) {
+  .about-landing .about-start-link:hover {
+    background: #1946cf;
+    box-shadow: 0 5px 0 #173dac, 0 13px 28px #2452dd33;
+    transform: translateY(-2px);
+  }
+}
+
+.about-landing .about-start-link:active {
+  box-shadow: 0 1px 0 #173dac, 0 4px 12px #2452dd22;
+  transform: translateY(2px);
+}
+
+.about-landing .about-person {
+  margin-top: 48px;
+  padding-top: 36px;
+}
+
+.about-landing .researcher-copy {
+  min-width: 0;
+  max-width: 76ch;
+}
+
+@media (max-width: 1000px) {
+  .about-landing .about-landing-intro { gap: 32px; }
+}
+
+@media (max-width: 850px) {
+  .about-page.about-landing { padding: 40px 24px; }
+  .about-landing .about-landing-intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+  .about-landing .about-start-link { min-height: 78px; padding: 18px 22px; }
+  .about-landing .about-person { margin-top: 38px; padding-top: 30px; }
+}
+
+@media (max-width: 600px) {
+  .about-page.about-landing { padding: 34px 20px; }
+  .about-landing .about-person { margin-top: 34px; padding-top: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-landing .about-start-link { transition: none; }
+  .about-landing .about-start-link:hover,
+  .about-landing .about-start-link:active { transform: none; }
+}

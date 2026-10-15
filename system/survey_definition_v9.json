@@ -1,0 +1,638 @@
+{
+  "version": "helena-v9",
+  "scale": {
+    "min": 1,
+    "max": 10,
+    "low": "Trifft überhaupt nicht zu",
+    "high": "Trifft voll und ganz zu"
+  },
+  "demographics": {
+    "id": "demographics",
+    "title": "Ein paar Angaben zu dir",
+    "description": "Du kannst die Angaben bereits während der Suche machen und hier prüfen oder ergänzen. Bei persönlichen Angaben ist auch „Keine Angabe“ möglich.",
+    "fields": [
+      {
+        "name": "study_arm",
+        "title": "Zugewiesene Studienvariante",
+        "kind": "choice",
+        "systemProvided": true,
+        "options": [
+          [
+            "A",
+            "A – Standard-KI-Beratung"
+          ],
+          [
+            "B",
+            "B – Auswählbare KI-Vorlagen"
+          ],
+          [
+            "C",
+            "C – Auswählbare und selbst gestaltbare KI-Suchpersönlichkeit"
+          ]
+        ],
+        "codes": {
+          "A": 0,
+          "B": 1,
+          "C": 2
+        }
+      },
+      {
+        "name": "age_group",
+        "title": "Wie alt bist du?",
+        "kind": "choice",
+        "options": [
+          [
+            "under_18",
+            "Unter 18 Jahren"
+          ],
+          [
+            "18_20",
+            "18–20 Jahre"
+          ],
+          [
+            "21_24",
+            "21–24 Jahre"
+          ],
+          [
+            "25_29",
+            "25–29 Jahre"
+          ],
+          [
+            "30_39",
+            "30–39 Jahre"
+          ],
+          [
+            "40_plus",
+            "40 Jahre oder älter"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ]
+      },
+      {
+        "name": "gender",
+        "title": "Welchem Geschlecht ordnest du dich zu?",
+        "kind": "choice",
+        "options": [
+          [
+            "female",
+            "Weiblich"
+          ],
+          [
+            "male",
+            "Männlich"
+          ],
+          [
+            "diverse",
+            "Divers"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ]
+      },
+      {
+        "name": "education",
+        "title": "Was beschreibt deine aktuelle Situation am besten?",
+        "kind": "choice",
+        "options": [
+          [
+            "bachelor",
+            "Bachelorstudium"
+          ],
+          [
+            "master",
+            "Masterstudium"
+          ],
+          [
+            "other_studies",
+            "Anderes Studium"
+          ],
+          [
+            "doctorate",
+            "Promotion"
+          ],
+          [
+            "training",
+            "Schule oder Ausbildung"
+          ],
+          [
+            "not_studying",
+            "Aktuell nicht im Studium oder in Ausbildung"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ]
+      },
+      {
+        "name": "study_field",
+        "title": "Was ist deine Studien- oder Fachrichtung?",
+        "kind": "text",
+        "optional": true,
+        "maxLength": 160,
+        "hint": "Du kannst dieses Feld auch leer lassen."
+      },
+      {
+        "name": "job_portal_experience",
+        "title": "Wie häufig hast du in den letzten sechs Monaten Online-Jobportale genutzt?",
+        "kind": "choice",
+        "level": "ordinal",
+        "beforeSystem": true,
+        "options": [
+          [
+            "never",
+            "Nie"
+          ],
+          [
+            "occasionally",
+            "Seltener als einmal pro Woche"
+          ],
+          [
+            "weekly",
+            "Mindestens wöchentlich, aber nicht täglich"
+          ],
+          [
+            "daily",
+            "Täglich"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ],
+        "codes": {
+          "never": 0,
+          "occasionally": 1,
+          "weekly": 2,
+          "daily": 3
+        }
+      },
+      {
+        "name": "ai_chat_experience",
+        "title": "Wie häufig hast du in den letzten sechs Monaten KI-Chatbots genutzt?",
+        "kind": "choice",
+        "level": "ordinal",
+        "beforeSystem": true,
+        "options": [
+          [
+            "never",
+            "Nie"
+          ],
+          [
+            "occasionally",
+            "Seltener als einmal pro Woche"
+          ],
+          [
+            "weekly",
+            "Mindestens wöchentlich, aber nicht täglich"
+          ],
+          [
+            "daily",
+            "Täglich"
+          ],
+          [
+            "not_specified",
+            "Keine Angabe"
+          ]
+        ],
+        "codes": {
+          "never": 0,
+          "occasionally": 1,
+          "weekly": 2,
+          "daily": 3
+        }
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "search_context",
+      "title": "Dein Suchvorhaben",
+      "description": "Beschreibe kurz, wofür du HELENA gerade genutzt hast.",
+      "fields": [
+        {
+          "name": "search_goal",
+          "title": "Wonach hast du mit HELENA gesucht?",
+          "kind": "text",
+          "multiline": true,
+          "minLength": 3,
+          "maxLength": 1000,
+          "hint": "Nenne den Tätigkeitsbereich, die gewünschte Stellenart und die Suchwünsche, die für dich wichtig waren. Auch wenn du das Beispielprofil genutzt hast, beschreibe kurz das Suchvorhaben."
+        }
+      ]
+    },
+    {
+      "id": "overall",
+      "title": "Deine Erfahrung mit der Suche",
+      "description": "Bewerte das Suchsystem, das du gerade ausprobiert hast.",
+      "fields": [
+        {
+          "name": "search_ease",
+          "title": "Wie einfach war es, das Suchsystem zu bedienen?",
+          "kind": "scale",
+          "level": "ordinal",
+          "scale": {
+            "low": "Sehr schwierig",
+            "high": "Sehr einfach"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ]
+        },
+        {
+          "name": "express_search_needs",
+          "title": "Wie gut konntest du dem System mitteilen, wonach du suchst?",
+          "kind": "scale",
+          "scale": {
+            "low": "Sehr schlecht",
+            "high": "Sehr gut"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ]
+        },
+        {
+          "name": "adapt_search_ease",
+          "title": "Wie einfach war es, deine Suchwünsche während der Suche anzupassen?",
+          "kind": "scale",
+          "scale": {
+            "low": "Sehr schwierig",
+            "high": "Sehr einfach"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ]
+        },
+        {
+          "name": "search_effort",
+          "title": "Wie aufwendig war es, deine Suche durchzuführen?",
+          "kind": "scale",
+          "scale": {
+            "low": "Überhaupt nicht aufwendig",
+            "high": "Sehr aufwendig"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ]
+        },
+        {
+          "name": "system_usefulness",
+          "title": "Wie hilfreich war das System für die Durchführung deiner Suche?",
+          "kind": "scale",
+          "scale": {
+            "low": "Gar nicht hilfreich",
+            "high": "Sehr hilfreich"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ]
+        },
+        {
+          "name": "future_use",
+          "title": "Wie wahrscheinlich ist es, dass du dieses Suchsystem bei einer zukünftigen Jobsuche nutzen würdest?",
+          "kind": "scale",
+          "level": "ordinal",
+          "scale": {
+            "low": "Sehr unwahrscheinlich",
+            "high": "Sehr wahrscheinlich"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich noch nicht einschätzen"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "title": "Suchen im Gespräch",
+      "description": "Wie hast du den Chat bei deiner Suche genutzt?",
+      "fields": [
+        {
+          "name": "chat_helpfulness",
+          "kind": "scale",
+          "title": "Wie hilfreich war der Chat, um deine Suchwünsche zu konkretisieren?",
+          "scale": {
+            "low": "Gar nicht hilfreich",
+            "high": "Sehr hilfreich"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ]
+        },
+        {
+          "name": "search_refinement",
+          "title": "Hast du deine Suchwünsche im Chat ergänzt oder verändert?",
+          "kind": "choice",
+          "presentation": "radio",
+          "level": "nominal",
+          "options": [
+            [
+              "yes",
+              "Ja"
+            ],
+            [
+              "no",
+              "Nein"
+            ]
+          ],
+          "codes": {
+            "yes": 1,
+            "no": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "usefulness",
+      "title": "Score und Begründungen",
+      "description": "Wie hilfreich waren diese Funktionen für deine Suche?",
+      "fields": [
+        {
+          "name": "score_usefulness",
+          "topic": "Score",
+          "kind": "scale",
+          "title": "Wie nützlich war der Score, um dir einen Überblick über die Stellen zu verschaffen?",
+          "scale": {
+            "low": "Gar nicht nützlich",
+            "high": "Sehr nützlich"
+          },
+          "nonresponse": [
+            [
+              "not_used",
+              "Nicht genutzt"
+            ],
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ]
+        },
+        {
+          "name": "match_reasons_usefulness",
+          "topic": "Warum eine Stelle passt",
+          "kind": "scale",
+          "title": "Wie nützlich waren die Stichpunkte „Warum das passen könnte“, um die Empfehlung nachzuvollziehen?",
+          "scale": {
+            "low": "Gar nicht nützlich",
+            "high": "Sehr nützlich"
+          },
+          "nonresponse": [
+            [
+              "not_used",
+              "Nicht genutzt"
+            ],
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "personality",
+      "title": "Deine KI-Suchpersönlichkeit",
+      "description": "Wie hast du die Auswahl und die Wirkung deiner KI-Suchpersönlichkeit erlebt?",
+      "fields": [
+        {
+          "name": "personality_customized",
+          "title": "Hast du die Eigenschaften deiner KI-Suchpersönlichkeit selbst angepasst?",
+          "kind": "choice",
+          "presentation": "radio",
+          "level": "nominal",
+          "options": [
+            [
+              "yes",
+              "Ja"
+            ],
+            [
+              "no",
+              "Nein"
+            ]
+          ],
+          "codes": {
+            "yes": 1,
+            "no": 0
+          },
+          "visibleIf": {
+            "field": "study_arm",
+            "equals": "C"
+          }
+        },
+        {
+          "name": "template_selection_ease",
+          "title": "Wie einfach war es, eine KI-Vorlage auszuwählen?",
+          "kind": "scale",
+          "level": "ordinal",
+          "scale": {
+            "low": "Sehr schwierig",
+            "high": "Sehr einfach"
+          },
+          "nonresponse": [
+            [
+              "not_used",
+              "Keine andere Vorlage ausgewählt"
+            ],
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "visibleIf": {
+            "field": "study_arm",
+            "equals": "B"
+          }
+        },
+        {
+          "name": "personality_setup",
+          "title": "Wie einfach war es, deine KI-Suchpersönlichkeit selbst zu gestalten?",
+          "kind": "scale",
+          "level": "ordinal",
+          "scale": {
+            "low": "Sehr schwierig",
+            "high": "Sehr einfach"
+          },
+          "nonresponse": [
+            [
+              "not_used",
+              "Nicht selbst gestaltet"
+            ],
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "visibleIf": {
+            "field": "study_arm",
+            "equals": "C"
+          }
+        },
+        {
+          "name": "personality_clarity_search",
+          "title": "Wie klar war dir, wie deine KI-Suchpersönlichkeit die Reihenfolge der Stellen beeinflusst?",
+          "kind": "scale",
+          "level": "ordinal",
+          "scale": {
+            "low": "Überhaupt nicht klar",
+            "high": "Völlig klar"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "visibleIf": {
+            "field": "study_arm",
+            "in": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "name": "personality_clarity_chat",
+          "title": "Wie klar war dir, wie deine KI-Suchpersönlichkeit die Antworten im Chat beeinflusst?",
+          "kind": "scale",
+          "level": "ordinal",
+          "scale": {
+            "low": "Überhaupt nicht klar",
+            "high": "Völlig klar"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "visibleIf": {
+            "field": "study_arm",
+            "in": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "name": "personality_consistency",
+          "title": "Wie deutlich hast du die Eigenschaften deiner KI-Suchpersönlichkeit in den Antworten des Chatbots wiedererkannt?",
+          "kind": "scale",
+          "level": "ordinal",
+          "scale": {
+            "low": "Überhaupt nicht",
+            "high": "Sehr deutlich"
+          },
+          "nonresponse": [
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "visibleIf": {
+            "field": "study_arm",
+            "in": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "name": "personalized_chat_usefulness",
+          "topic": "Personalisierter Chatbot",
+          "kind": "scale",
+          "title": "Wie nützlich war der Gesprächsstil deiner KI-Suchpersönlichkeit für deine Suche?",
+          "scale": {
+            "low": "Gar nicht nützlich",
+            "high": "Sehr nützlich"
+          },
+          "nonresponse": [
+            [
+              "not_used",
+              "Nicht genutzt"
+            ],
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "visibleIf": {
+            "field": "study_arm",
+            "in": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "name": "personalized_search_usefulness",
+          "topic": "Personalisierte Suche",
+          "kind": "scale",
+          "title": "Wie hilfreich waren die Bewertungsschwerpunkte deiner KI-Suchpersönlichkeit für deine Suche?",
+          "scale": {
+            "low": "Gar nicht hilfreich",
+            "high": "Sehr hilfreich"
+          },
+          "nonresponse": [
+            [
+              "not_used",
+              "Nicht genutzt"
+            ],
+            [
+              "not_assessable",
+              "Kann ich nicht beurteilen"
+            ]
+          ],
+          "visibleIf": {
+            "field": "study_arm",
+            "in": [
+              "B",
+              "C"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "title": "Dein Feedback",
+      "description": "Zum Abschluss kannst du uns Verbesserungsvorschläge mitgeben.",
+      "fields": [
+        {
+          "name": "feedback",
+          "kind": "text",
+          "title": "Was würdest du an diesem Suchsystem verbessern?",
+          "optional": true,
+          "multiline": true,
+          "maxLength": 4000,
+          "hint": "Bitte nenne keine Namen oder anderen personenbezogenen Angaben."
+        }
+      ]
+    }
+  ]
+}

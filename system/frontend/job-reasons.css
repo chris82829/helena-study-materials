@@ -1,0 +1,11 @@
+.match-reason .reason-bullets li{overflow-wrap:anywhere}
+.reason-more{margin-top:4px}
+.reason-more-toggle{display:flex;align-items:center;gap:7px;min-height:44px;max-width:100%;padding:8px 0;border:0;background:transparent;color:#4867a6;font-size:13px;font-weight:550;line-height:1.4;text-align:left;cursor:pointer;touch-action:manipulation;border-radius:5px}
+.reason-more-toggle:hover{color:#244ddb}
+.reason-more-toggle:focus-visible{outline:3px solid #7698ff;outline-offset:2px}
+.reason-more-toggle>svg{transition:transform 140ms ease}
+.reason-more-toggle[aria-expanded=true]>svg{transform:rotate(180deg)}
+.reason-more-content[hidden]{display:none}
+.reason-more-content>.reason-bullets{margin-top:2px}
+.reason-more-content .skills-list span{min-width:0;overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){.reason-more-toggle>svg{transition:none}}
