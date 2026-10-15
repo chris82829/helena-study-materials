@@ -1,0 +1,16 @@
+Question ID: intention_reuse
+Source column: v14_wiederverwendungsabsicht
+
+English wording in the supplied manuscript (or context-question translation):
+I will use such a system again in a future job search.
+
+Recovered server German wording — administered version not yet confirmed:
+Ich werde HELENA bei einer weiteren Jobsuche wieder nutzen.
+
+English translation of the recovered German wording:
+I will use HELENA again in a future job search.
+
+Recorded source framework: ResQue
+Recorded source-item mapping: Tabelle 2, Use Intentions, Item 1; Auswahl gemäß Abschnitt 5.1
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/2043932.2043962

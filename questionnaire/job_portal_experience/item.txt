@@ -1,0 +1,16 @@
+Question ID: job_portal_experience
+Source column: v14_jobportal_vorerfahrung
+
+English wording in the supplied manuscript (or context-question translation):
+How often have you used online job portals in the past six months?
+
+Recovered server German wording — administered version not yet confirmed:
+Wie häufig hast du in den letzten sechs Monaten Online-Jobportale genutzt?
+
+English translation of the recovered German wording:
+How often have you used online job portals in the past six months?
+
+Recorded source framework: HELENA
+Recorded source-item mapping: Studienkontext, kein Framework-Item
+Recorded adaptation: Not recorded
+Reference: 

@@ -1,0 +1,16 @@
+Question ID: dialogue_attentiveness
+Source column: v14_dialog_aufmerksamkeit
+
+English wording in the supplied manuscript (or context-question translation):
+The chatbot paid attention to what I said.
+
+Recovered server German wording — administered version not yet confirmed:
+Der Chatbot schenkte meinen Aussagen Aufmerksamkeit.
+
+English translation of the recovered German wording:
+The chatbot paid attention to what I said.
+
+Recorded source framework: CRS-Que
+Recorded source-item mapping: Tabelle 5, CUI Attentiveness (Kurzform)
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/3631534

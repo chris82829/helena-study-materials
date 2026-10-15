@@ -1,0 +1,16 @@
+Question ID: usefulness_suggestions
+Source column: v14_nutzen_vorschlaege
+
+English wording in the supplied manuscript (or context-question translation):
+The system made the best possible suggestions from the available offers.
+
+Recovered server German wording — administered version not yet confirmed:
+HELENA hat mir gute Vorschläge gemacht.
+
+English translation of the recovered German wording:
+HELENA made good suggestions to me.
+
+Recorded source framework: ResQue
+Recorded source-item mapping: Tabelle 2, Perceived Usefulness, Item 3
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/2043932.2043962

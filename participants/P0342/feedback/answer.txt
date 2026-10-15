@@ -1,0 +1,3 @@
+Das System hat zu genau nach Schalgworten gesucht und die Begriffe nicht in einem weiteren Kontext interpretiert, um alternativen anzubieten.
+Meine Anfrage bezüglich Jobs an einem bestimmten Ort wurde komplett ignoriert.
+Der Ansatz ist gut, allerdings muss man ein Kompromiss zwischen Anwenderfreundlichkeitn und gewünschtes zufriedenstellendes Ergebnis finden. Im Moment ist die Anwendung eher "anwenderfreundlich".

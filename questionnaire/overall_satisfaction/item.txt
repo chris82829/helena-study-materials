@@ -1,0 +1,16 @@
+Question ID: overall_satisfaction
+Source column: v14_gesamtzufriedenheit
+
+English wording in the supplied manuscript (or context-question translation):
+Overall, I am satisfied with the system.
+
+Recovered server German wording — administered version not yet confirmed:
+Insgesamt bin ich mit HELENA zufrieden.
+
+English translation of the recovered German wording:
+Overall, I am satisfied with HELENA.
+
+Recorded source framework: ResQue
+Recorded source-item mapping: Tabelle 2, Overall Satisfaction (Einzelitem)
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/2043932.2043962

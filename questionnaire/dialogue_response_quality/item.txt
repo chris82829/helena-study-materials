@@ -1,0 +1,16 @@
+Question ID: dialogue_response_quality
+Source column: v14_dialog_antwortqualitaet
+
+English wording in the supplied manuscript (or context-question translation):
+The chatbot’s responses made sense to me.
+
+Recovered server German wording — administered version not yet confirmed:
+Die meisten Antworten des Chatbots ergaben für mich Sinn.
+
+English translation of the recovered German wording:
+Most of the chatbot’s responses made sense to me.
+
+Recorded source framework: CRS-Que
+Recorded source-item mapping: Tabelle 5, CUI Response Quality (Kurzform)
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/3631534

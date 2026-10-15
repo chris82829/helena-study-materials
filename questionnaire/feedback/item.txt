@@ -1,0 +1,16 @@
+Question ID: feedback
+Source column: v14_verbesserungsvorschlaege_freitext
+
+English wording in the supplied manuscript (or context-question translation):
+What helped you in your search, and what was missing?
+
+Recovered server German wording — administered version not yet confirmed:
+Was hat dir bei deiner Suche geholfen, und was hat dir gefehlt?
+
+English translation of the recovered German wording:
+What helped you in your search, and what was missing?
+
+Recorded source framework: HELENA
+Recorded source-item mapping: Studienkontext, kein Framework-Item
+Recorded adaptation: Not recorded
+Reference: 

@@ -1,0 +1,16 @@
+Question ID: usefulness_find_easy
+Source column: v14_nutzen_einfacher_finden
+
+English wording in the supplied manuscript (or context-question translation):
+With the system, it was easy to narrow down my search and review relevant positions.
+
+Recovered server German wording — administered version not yet confirmed:
+Mit HELENA war es einfach, Stellen zu finden, die mir gefallen.
+
+English translation of the recovered German wording:
+With HELENA, it was easy to find positions that I liked.
+
+Recorded source framework: ResQue
+Recorded source-item mapping: Tabelle 2, Perceived Usefulness, Item 2
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/2043932.2043962

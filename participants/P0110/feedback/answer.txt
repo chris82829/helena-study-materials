@@ -1,0 +1,4 @@
+I think you've got a solid base but I could suggest some additions based on my limited 3 questions
+- please an option to save the job searches.
+- I asked the bot to chat in English, but it could not, maybe that could be added.
+- a short explanation of why a job is more relevant to me could be helpful

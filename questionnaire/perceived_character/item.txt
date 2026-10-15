@@ -1,0 +1,16 @@
+Question ID: perceived_character
+Source column: v14_manipulationscheck_beratungscharakter
+
+English wording in the supplied manuscript (or context-question translation):
+The advice in the chat had a recognizable character of its own for me (e.g., tone, personality).
+
+Recovered server German wording — administered version not yet confirmed:
+Die Beratung im Chat hatte für mich einen erkennbaren eigenen Charakter (z. B. Tonfall, Persönlichkeit).
+
+English translation of the recovered German wording:
+The advice in the chat had a recognizable character of its own for me (e.g., tone, personality).
+
+Recorded source framework: HELENA
+Recorded source-item mapping: HELENA – wahrgenommener Charakter als Manipulationscheck
+Recorded adaptation: Eigenes Item; alle Studiengruppen, keine Voraussetzung für den individuellen Einschluss.
+Reference: 

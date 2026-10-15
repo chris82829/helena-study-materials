@@ -1,0 +1,3 @@
+Direkte Eingrenzung der Jobbranche, ohne aufwändige Filter die sowieso nicht Funktionieren. 
+
+Was noch toll wäre eine direkte Eingrenzung des Ortes, wobei man das sicher dem Chatbot sagen kann

@@ -1,0 +1,16 @@
+Question ID: control_adjustment
+Source column: v14_kontrolle_anpassung
+
+English wording in the supplied manuscript (or context-question translation):
+I was in control of adapting the recommendations to my wishes.
+
+Recovered server German wording — administered version not yet confirmed:
+Ich hatte die Kontrolle darüber, die Empfehlungen an meine Wünsche anzupassen.
+
+English translation of the recovered German wording:
+I was in control of adapting the recommendations to my wishes.
+
+Recorded source framework: CRS-Que
+Recorded source-item mapping: Tabelle 4, User Control, Item 3
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/3631534

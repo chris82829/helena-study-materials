@@ -1,0 +1,16 @@
+Question ID: transparency_fit
+Source column: v14_transparenz_passung
+
+English wording in the supplied manuscript (or context-question translation):
+I understood how well the recommendations matched my wishes.
+
+Recovered server German wording — administered version not yet confirmed:
+Ich habe verstanden, wie gut die Empfehlungen zu meinen Wünschen passten.
+
+English translation of the recovered German wording:
+I understood how well the recommendations matched my wishes.
+
+Recorded source framework: CRS-Que
+Recorded source-item mapping: Tabelle 4, Transparency, Item 3
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/3631534

@@ -1,0 +1,16 @@
+Question ID: usefulness_ideal
+Source column: v14_nutzen_passende_stelle
+
+English wording in the supplied manuscript (or context-question translation):
+The system helped me find the most relevant positions for me among the available offers.
+
+Recovered server German wording — administered version not yet confirmed:
+HELENA hat mir geholfen, die ideale Stelle für mein Suchvorhaben zu finden.
+
+English translation of the recovered German wording:
+HELENA helped me find the ideal position for my search goal.
+
+Recorded source framework: ResQue
+Recorded source-item mapping: Tabelle 2, Perceived Usefulness, Item 1
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/2043932.2043962

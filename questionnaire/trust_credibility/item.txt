@@ -1,0 +1,16 @@
+Question ID: trust_credibility
+Source column: v14_vertrauen_glaubwuerdigkeit
+
+English wording in the supplied manuscript (or context-question translation):
+The system’s assessments of how well the retrieved positions fit me seemed credible.
+
+Recovered server German wording — administered version not yet confirmed:
+Die Einschätzungen von HELENA zur Passung erschienen mir glaubwürdig.
+
+English translation of the recovered German wording:
+HELENA’s assessments of fit seemed credible to me.
+
+Recorded source framework: ResQue / CRS-Que (angelehnt)
+Recorded source-item mapping: ResQue Tabelle 2: Confidence & Trust; CRS-Que Tabelle 4: Trust & Confidence (konzeptuell angelehnt)
+Recorded adaptation: Eigenständig adaptierte Zweiergruppe für Stellenpassung und Glaubwürdigkeit; keine vollständige oder validierte Originalskala.
+Reference: https://doi.org/10.1145/2043932.2043962

@@ -1,0 +1,16 @@
+Question ID: control_recommendations
+Source column: v14_kontrolle_empfehlungen
+
+English wording in the supplied manuscript (or context-question translation):
+I could influence which recommendations the chatbot gave me.
+
+Recovered server German wording — administered version not yet confirmed:
+Ich konnte beeinflussen, welche Empfehlungen der Chatbot mir gab.
+
+English translation of the recovered German wording:
+I could influence which recommendations the chatbot gave me.
+
+Recorded source framework: CRS-Que
+Recorded source-item mapping: Tabelle 4, User Control, Item 2
+Recorded adaptation: Deutsche Übertragung in den HELENA-Jobsuchkontext; gemeinsame siebenstufige Skala.
+Reference: https://doi.org/10.1145/3631534

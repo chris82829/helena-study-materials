@@ -1,0 +1,16 @@
+Question ID: trust_fit
+Source column: v14_vertrauen_passung
+
+English wording in the supplied manuscript (or context-question translation):
+I trust the system’s assessment of which of the available positions fit me best.
+
+Recovered server German wording — administered version not yet confirmed:
+Ich vertraue darauf, dass die von HELENA vorgeschlagenen Stellen wirklich zu mir passen.
+
+English translation of the recovered German wording:
+I trust that the positions suggested by HELENA really fit me.
+
+Recorded source framework: ResQue / CRS-Que (angelehnt)
+Recorded source-item mapping: ResQue Tabelle 2: Confidence & Trust; CRS-Que Tabelle 4: Trust & Confidence (konzeptuell angelehnt)
+Recorded adaptation: Eigenständig adaptierte Zweiergruppe für Stellenpassung und Glaubwürdigkeit; keine vollständige oder validierte Originalskala.
+Reference: https://doi.org/10.1145/2043932.2043962

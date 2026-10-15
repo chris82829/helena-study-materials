@@ -1,0 +1,16 @@
+Question ID: postings_available
+Source column: v14_kontrolle_passende_stellen_verfuegbar
+
+English wording in the supplied manuscript (or context-question translation):
+For my purpose, the system basically contained suitable job offers.
+
+Recovered server German wording — administered version not yet confirmed:
+NOT RECOVERED
+
+English translation of the recovered German wording:
+NOT AVAILABLE
+
+Recorded source framework: Own development according to manuscript
+Recorded source-item mapping: Not recovered
+Recorded adaptation: Not recorded
+Reference: 

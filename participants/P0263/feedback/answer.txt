@@ -1,0 +1,1 @@
+Der KI-Abgleich hat relativ lang gedauert. Also es hat immer sehr lang geladen. Das hat etwas zu Unsicherheit geführt, ob das System sich aufgehängt hat. Hier war es immer etwas untrasparent.
