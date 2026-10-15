@@ -1,0 +1,53 @@
+name: Publish HELENA code
+on:
+  push:
+    paths: ['.github/workflows/publish-code.yml']
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Import reviewed source archive
+        run: |
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          import zipfile,hashlib
+          p=Path('helena-code-release.zip')
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='3cc7289f02fa41267389b2f204d7ae37dfa1db8a056733fa9666615a1fc1f707'
+          with zipfile.ZipFile(p) as z:
+              for name in z.namelist():
+                  assert '..' not in Path(name).parts and not Path(name).is_absolute()
+                  assert name=='README.md' or name.startswith(('analysis/','system/'))
+              z.extractall('.')
+          PYTHON
+      - name: Build corrected frontend
+        working-directory: system
+        run: npm install --ignore-scripts && npm run build
+      - name: Check Python syntax and reproduce primary result
+        run: |
+          python -m pip install -r analysis/requirements.txt
+          python -m compileall -q system analysis
+          python analysis/analyze.py --output /tmp/helena-statistics.json
+          python - <<'PYTHON'
+          import json
+          r=json.load(open('/tmp/helena-statistics.json'))
+          assert r['sample']=={'A':122,'B':117,'C':108}
+          assert round(r['H1']['p_value'],3)==.008
+          assert round(r['H1']['hedges_g'],2)==.38
+          print('Primary result reproduced.')
+          PYTHON
+      - name: Publish tested source and remove transfer files
+        run: |
+          find system analysis -type d -name __pycache__ -prune -exec rm -rf {} +
+          rm -rf system/node_modules system/web-dist
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add system analysis README.md
+          git rm helena-code-release.zip .github/workflows/publish-code.yml
+          git commit -m "Provide HELENA system and versioned analysis script"
+          git push
